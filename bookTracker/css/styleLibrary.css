@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Padding по бокам и снизу, чтобы контент не прилипал к краям */
+    padding: 0 20px 40px;
+}
+
+.back-link {
+    width: 100%;
+    /* Убрано max-width: 1400px; */
+    margin: 20px 0 20px;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #2980b9;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+/* КОНТЕЙНЕР НА ВСЮ ШИРИНУ */
+.content-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    /* !!! Ключевое изменение: max-width удалено для полной ширины !!! */
+}
+
+/* СЕТКА ДЛЯ РАЗМЕЩЕНИЯ 6 ЭЛЕМЕНТОВ В РЯД */
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 РАВНЫХ колонок */
+    gap: 20px;
+}
+
+/* КОНТЕЙНЕР ОДНОГО ЭЛЕМЕНТА (БЛОК + ЗВЕЗДЫ) */
+.item-card {
+    display: flex;
+    flex-direction: column; /* Элементы внутри карточки располагаются вертикально */
+    align-items: center;
+}
+
+.vertical-block {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 6px;
+    height: 500px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* СТИЛИ ЗВЕЗДНОГО РЕЙТИНГА */
+.rating-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 30px;
+    font-size: 3rem;
+}
+
+.star {
+    color: #ccc;
+    cursor: pointer;
+    user-select: none;
+}
+
+.star.filled {
+    //color: #f1c40f;
+}
+
+/* Адаптивность для меньших экранов */
+@media (max-width: 1200px) {
+    .main-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 блока в ряд */
+    }
+}
+@media (max-width: 768px) {
+    .main-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 блока в ряд */
+    }
+}

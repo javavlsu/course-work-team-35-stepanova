@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css"/>
+    <title>Book Tracker Layout</title>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">Book Tracker</div>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Поиск...">
+    </div>
+
+    <a href="login.html" class="auth-link" title="Авторизация">
+        Auth
+    </a>
+</header>
+
+<main>
+
+    <section class="column left-col">
+        <a href="readNow.html" class="rect link-rect">Читаю сейчас</a>
+
+        <div class="rect">Ежедневная статистика</div>
+
+        <div class="squares-row">
+            <a href="plans.html" class="square square-link">В планах</a>
+            <a href="throw.html" class="square square-link"> Брошено</a>
+        </div>
+        <a href="library.html" class="rect link-rect">Моя библиотека</a>
+    </section>
+
+    <section class="column center-col">
+        <div class="year-controls">
+            <span class="arrow-btn" onclick="changeYear(-1)">&lt;</span>
+            <h2 id="year-display">2025</h2>
+            <span class="arrow-btn" onclick="changeYear(1)">&gt;</span>
+        </div>
+
+        <a href="yourGoals.html" class="center-block center-link">
+            Годовая статистика
+        </a>
+
+    </section>
+
+    <section class="column right-col">
+        <div class="calendar-header">
+            <h2>Календарь</h2>
+            <div class="calendar-controls">
+                <span class="arrow-btn">&lt;</span>
+                <span class="month-name">Октябрь</span>
+                <span class="arrow-btn">&gt;</span>
+            </div>
+        </div>
+
+        <div class="calendar-block">
+            Блок календаря
+        </div>
+    </section>
+
+</main>
+<script>
+    function changeYear(step) {
+        // Находим элемент с текстом года
+        const yearElement = document.getElementById('year-display');
+
+        // Получаем текущее число из текста
+        let currentYear = parseInt(yearElement.innerText);
+
+        // Прибавляем или отнимаем (step будет 1 или -1)
+        currentYear += step;
+
+        // Обновляем текст на странице
+        yearElement.innerText = currentYear;
+    }
+</script>
+</body>
+</html>
