@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css"/>
+    <title>Book Tracker Layout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+    <div class="logo">Book Tracker</div>
+
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="Поиск в библиотеке..." onkeypress="if(event.key === 'Enter') performSearch()">
+        <button onclick="performSearch()" style="cursor:pointer; background:none; border:none;">🔍</button>
+    </div>
+
+    <a href="login.html" class="auth-link" title="Авторизация">
+        Auth
+    </a>
+</header>
+
+<main>
+
+    <section class="column left-col">
+        <a href="readNow.html" class="rect link-rect">Читаю сейчас</a>
+
+        <div class="rect daily-stats-container">
+            <div class="stat-day">
+                <span class="day-label">ПН</span>
+                <span class="day-value">123</span>
+            </div>
+            <div class="stat-day">
+                <span class="day-label">ВТ</span>
+                <span class="day-value">67</span>
+            </div>
+            <div class="stat-day">
+                <span class="day-label">СР</span>
+                <span class="day-value">45</span>
+            </div>
+            <div class="stat-day">
+                <span class="day-label">ЧТ</span>
+                <span class="day-value">67</span>
+            </div>
+            <div class="stat-day">
+                <span class="day-label">ПТ</span>
+                <span class="day-value">87</span>
+            </div>
+            <div class="stat-day">
+                <span class="day-label">СБ</span>
+                <span class="day-value">23</span>
+            </div>
+            <div class="stat-day">
+                <span class="day-label">ВС</span>
+                <span class="day-value">232</span>
+            </div>
+        </div>
+
+        <div class="squares-row">
+            <a href="plans.html" class="square square-link">В планах</a>
+            <a href="throw.html" class="square square-link"> Брошено</a>
+        </div>
+        <a href="library.html" class="rect link-rect">Моя библиотека</a>
+    </section>
+
+    <section class="column center-col">
+        <div class="year-controls">
+            <span class="arrow-btn" onclick="changeYear(-1)">&lt;</span>
+            <h2 id="year-display">2025</h2>
+            <span class="arrow-btn" onclick="changeYear(1)">&gt;</span>
+        </div>
+
+        <a href="yourGoals.html" class="center-block center-link">
+            <div class="goal-content">
+                <img src="../image/YearStatic.png" alt="Статистика" class="goal-img">
+                <span></span>
+            </div>
+        </a>
+
+    </section>
+
+    <section class="column right-col">
+        <div class="calendar-header" >
+            <h2 >Календарь</h2>
+            <div class="calendar-controls" >
+                <span class="arrow-btn" onclick="changeMonth(-1)">&lt;</span>
+                <span class="month-name" id="month-display" >Октябрь</span>
+                <span class="arrow-btn" onclick="changeMonth(1)">&gt;</span>
+            </div>
+        </div>
+
+        <div class="calendar-block" id="calendar-grid-container">
+            <div class="calendar-grid">
+                <div class="day-name">ПН</div>
+                <div class="day-name">ВТ</div>
+                <div class="day-name">СР</div>
+                <div class="day-name">ЧТ</div>
+                <div class="day-name">ПТ</div>
+                <div class="day-name">СБ</div>
+                <div class="day-name">ВС</div>
+
+                <div class="day-cell empty"></div>
+                <div class="day-cell empty"></div>
+
+                <div class="day-cell">
+                    <div class="book-mini-photo"><img src="../image/1984.jpg" alt="книга"></div>
+                    <span class="day-num">1</span>
+                </div>
+                <div class="day-cell"><span class="day-num">2</span></div>
+                <div class="day-cell"><span class="day-num">3</span></div>
+                <div class="day-cell"><span class="day-num">4</span></div>
+                <div class="day-cell"><span class="day-num">5</span></div>
+                <div class="day-cell"><span class="day-num">6</span></div>
+                <div class="day-cell"><span class="day-num">7</span></div>
+                <div class="day-cell"><span class="day-num">8</span></div>
+                <div class="day-cell"><span class="day-num">9</span></div>
+                <div class="day-cell"><span class="day-num">10</span></div>
+                <div class="day-cell"><span class="day-num">11</span></div>
+                <div class="day-cell">
+                    <div class="book-mini-photo"><img src="../image/ведьмак.jpg" alt="книга"></div>
+                    <span class="day-num">12</span>
+                </div>
+                <div class="day-cell"><span class="day-num">13</span></div><div class="day-cell"><span class="day-num">14</span></div>
+                <div class="day-cell"><span class="day-num">15</span></div><div class="day-cell"><span class="day-num">16</span></div>
+                <div class="day-cell"><span class="day-num">17</span></div><div class="day-cell"><span class="day-num">18</span></div>
+                <div class="day-cell"><span class="day-num">19</span></div><div class="day-cell"><span class="day-num">20</span></div>
+                <div class="day-cell"><span class="day-num">21</span></div><div class="day-cell"><span class="day-num">22</span></div>
+                <div class="day-cell"><span class="day-num">23</span></div>
+
+                <div class="day-cell">
+                    <div class="book-mini-photo"><img src="../image/мастер_и_маргарита.jpg" alt="книга"></div>
+                    <span class="day-num">24</span>
+                </div>
+
+                <div class="day-cell"><span class="day-num">25</span></div><div class="day-cell"><span class="day-num">26</span></div>
+                <div class="day-cell"><span class="day-num">27</span></div><div class="day-cell"><span class="day-num">28</span></div>
+                <div class="day-cell"><span class="day-num">29</span></div><div class="day-cell"><span class="day-num">30</span></div>
+                <div class="day-cell"><span class="day-num">31</span></div>
+            </div>        </div>
+    </section>
+
+
+
+
+
+</main>
+<script>
+    function changeYear(step) {
+        // Находим элемент с текстом года
+        const yearElement = document.getElementById('year-display');
+
+        // Получаем текущее число из текста
+        let currentYear = parseInt(yearElement.innerText);
+
+        // Прибавляем или отнимаем (step будет 1 или -1)
+        currentYear += step;
+
+        // Обновляем текст на странице
+        yearElement.innerText = currentYear;
+    }
+
+    function performSearch() {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+            // Переходим на страницу библиотеки и передаем запрос через URL параметр ?q=
+            window.location.href = `library.html?q=${encodeURIComponent(query)}`;
+        }
+    }
+
+
+</script>
+</body>
+</html>

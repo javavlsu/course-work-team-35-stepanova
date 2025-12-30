@@ -1,0 +1,350 @@
+/* Обнуление стилей для чистоты */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- СТИЛИ ШАПКИ (HEADER) --- */
+header {
+    background-color: #fff;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Распределяет элементы по краям и центру */
+    padding: 0 20px;
+    border-bottom: 2px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    width: 200px; /* Фикс ширина, чтобы поиск был визуально по центру */
+}
+
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    width: 700px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.auth-link {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #5e1622; /* Синий квадрат */
+    border-radius: 5px; /* Немного скруглим углы, если нужно идеально квадратным - уберите это */
+    cursor: pointer;
+    transition: background 0.3s;
+    /* Текст внутри квадрата (опционально) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+}
+
+.auth-link:hover {
+    background-color: #40040c;
+}
+
+/* --- СТИЛИ ГЛАВНОГО КОНТЕНТА (MAIN) --- */
+main {
+    display: grid;
+    /* !!! КОММЕНТАРИЙ ДЛЯ ИЗМЕНЕНИЯ РАЗМЕРОВ !!!
+       Сейчас стоит '1fr 1fr 1fr' — это значит три РАВНЫЕ части.
+       Чтобы изменить пропорции, поменяйте эти значения.
+       Пример: '1fr 2fr 1fr' (центр в 2 раза шире боковых)
+       Пример: '25% 50% 25%' (в процентах)
+    */
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    height: calc(100vh - 70px); /* Высота экрана минус шапка */
+}
+
+/* Общие стили для колонок */
+.column {
+    background-color: #fff; /* Белый фон колонок (опционально) */
+    padding: 15px;
+    border-radius: 8px;
+    overflow-y: auto; /* Скролл, если контент не влезает */
+}
+
+/* --- ЛЕВАЯ ЧАСТЬ --- */
+.left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rect {
+    width: 100%;
+    height: 100px;
+    background-color: #b66a72;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #610b19;
+}
+
+.daily-stats-container {
+    display: flex;
+    justify-content: space-around; /* Распределяет дни равномерно */
+    padding: 0 10px;
+    gap: 5px;
+}
+
+/* Стили отдельного дня */
+.stat-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Чтобы все 7 блоков были равной ширины */
+}
+
+/* Надпись дня недели (ПН, ВТ...) */
+.day-label {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+/* Число под днем */
+.day-value {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+
+.link-rect {
+    text-decoration: none;
+    color: #ffffff;
+
+}
+
+.link-rect:hover {
+    background-color: #5e1622;
+}
+
+.squares-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.square {
+    width: 48%;
+    aspect-ratio: 1 / 1;
+    background-color: #b66a72;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+.square-link {
+    text-decoration: none;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+.square-link:hover {
+    background-color: #5e1622;
+}
+/* --- ЦЕНТРАЛЬНАЯ ЧАСТЬ --- */
+
+.year-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.year-controls h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    user-select: none;
+    padding-bottom: 25px;
+}
+
+.arrow-btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    background: #eee;
+    border-radius: 4px;
+    font-weight: bold;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.arrow-btn:hover {
+    background: #ddd;
+}
+
+
+.center-block {
+    width: 100%;
+    height: 89%;
+    background-color: #e8f8f5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+
+.center-block {
+    position: relative; /* Чтобы картинка не вылетала за границы */
+    width: 100%;
+    height: 89%;
+    background-color: #e8f8f5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Обрезает края картинки по радиусу рамки */
+    text-decoration: none;
+}
+
+.goal-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Растягивает фото без искажений по всему блоку */
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.center-block:hover .goal-bg-img {
+    transform: scale(1.05); /* Легкий эффект приближения при наведении */
+}
+
+.goal-text {
+    position: relative;
+    z-index: 2; /* Текст выше картинки */
+    background-color: rgb(149, 54, 66); /* Полупрозрачный фон для читаемости */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.center-link:hover {
+    background-color: transparent; /* Отключаем старый фон, так как теперь там фото */
+}
+
+
+/*!* --- ПРАВАЯ ЧАСТЬ --- *!*/
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 дней */
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    gap: 5px;
+}
+
+/* Названия дней (ПН, ВТ...) */
+.day-name {
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #610b19;
+    padding-bottom: 5px;
+}
+
+/* Ячейка дня */
+.day-cell {
+    border: 1px solid rgb(64, 4, 12);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Число всегда снизу */
+    padding: 2px;
+    position: relative;
+    min-height: 130px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Номер дня */
+.day-num {
+    font-size: 0.75rem;
+    color: #555;
+}
+
+/* Место под фото книги над числом */
+.book-mini-photo {
+    width: 100%;
+    height: 90px;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+.book-mini-photo img {
+    height: 100%;
+    width: auto;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Пустые ячейки в начале месяца */
+.day-cell.empty {
+    border: none;
+    background: none;
+}
+
+.right-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar-header {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.calendar-header h2 {
+    margin-bottom: 5px;
+}
+

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя библиотека</title>
+    <link rel="stylesheet" href="../css/styleLibrary.css">
+</head>
+<body>
+
+<!--<a href="index.html" class="back-link">&larr; Назад на главную</a>-->
+
+
+
+<header class="universal-header">
+    <div class="header-left">
+        <a href="index.html" class="logo">Book Tracker</a>
+    </div>
+
+    <nav class="header-nav">
+        <a href="readNow.html" class="nav-item">Читаю</a>
+        <a href="library.html" class="nav-item">Библиотека</a>
+        <a href="plans.html" class="nav-item">Планы</a>
+    </nav>
+
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="Поиск в библиотеке..." onkeypress="if(event.key === 'Enter') performSearch()">
+        <button onclick="performSearch()" style="cursor:pointer; background:none; border:none;">🔍</button>
+    </div>
+
+    <div class="header-right">
+        <a href="login.html" class="auth-link">Профиль</a>
+    </div>
+</header>
+
+<h1>Моя библиотека</h1>
+
+<div class="content-section">
+    <div class="main-grid">
+
+    <div class="item-card">
+        <div class="vertical-block">
+            <img src="../image/ведьмак.jpg" alt="Ведьмак" class="book-img">
+            <span class="book-title">Ведьмак: Последнее желание</span>
+        </div>
+        <div class="rating-stars">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span>
+        </div>
+    </div>
+
+    <div class="item-card">
+        <div class="vertical-block">
+            <img src="../image/1984.jpg" alt="1984" class="book-img">
+            <span class="book-title">1984 (Джордж Оруэлл)</span>
+        </div>
+        <div class="rating-stars">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+        </div>
+    </div>
+
+    <div class="item-card">
+        <div class="vertical-block">
+            <img src="../image/мастер_и_маргарита.jpg" alt="Мастер" class="book-img">
+            <span class="book-title">Мастер и Маргарита</span>
+        </div>
+        <div class="rating-stars">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+    </div>
+
+    <div class="item-card">
+        <div class="vertical-block">
+            <img src="../image/хоббит.jpg" alt="Хоббит" class="book-img">
+            <span class="book-title">Хоббит: Туда и обратно</span>
+        </div>
+        <div class="rating-stars">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+        </div>
+    </div>
+
+    <div class="item-card">
+        <div class="vertical-block">
+            <img src="../image/гарри_поттер.jpg" alt="Гарри" class="book-img">
+            <span class="book-title">Гарри Поттер</span>
+        </div>
+        <div class="rating-stars">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span>
+        </div>
+    </div>
+
+    <div class="item-card">
+        <div class="vertical-block">
+            <img src="../image/дюна.jpg" alt="Дюна" class="book-img">
+            <span class="book-title">Дюна (Фрэнк Герберт)</span>
+        </div>
+        <div class="rating-stars">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('q');
+
+        if (searchQuery) {
+            const query = searchQuery.toLowerCase();
+            const cards = document.querySelectorAll('.item-card');
+
+            cards.forEach(card => {
+                const titleText = card.querySelector('.book-title').innerText.toLowerCase();
+
+                if (titleText.includes(query)) {
+                    card.style.display = 'flex'; // Показываем карточку
+                } else {
+                    card.style.display = 'none'; // Скрываем
+                }
+            });
+        }
+    });
+
+    function performSearch() {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+            // Переходим на страницу библиотеки и передаем запрос через URL параметр ?q=
+            window.location.href = `library.html?q=${encodeURIComponent(query)}`;
+        }
+    }
+</script>
+
+</body>
+</html>

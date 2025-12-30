@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цели на год</title>
+    <link rel="stylesheet" href="../css/styleGoals.css"/>
+</head>
+<body>
+
+<!--<a href="index.html" class="back-link">&larr; Назад на главную</a>-->
+
+<header class="universal-header">
+    <div class="header-left">
+        <a href="index.html" class="logo">Book Tracker</a>
+    </div>
+
+    <nav class="header-nav">
+        <a href="readNow.html" class="nav-item">Читаю</a>
+        <a href="library.html" class="nav-item">Библиотека</a>
+        <a href="plans.html" class="nav-item">Планы</a>
+    </nav>
+
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="Поиск в библиотеке..." onkeypress="if(event.key === 'Enter') performSearch()">
+        <button onclick="performSearch()" style="cursor:pointer; background:none; border:none;">🔍</button>
+    </div>
+
+    <div class="header-right">
+        <a href="login.html" class="auth-link">Профиль</a>
+    </div>
+</header>
+
+
+
+    <main class="page-wrapper">
+        <div class="main-content">
+
+            <section class="section left-section">
+                <div class="year-controls">
+                    <span class="arrow-btn">&lt;</span>
+                    <h2>2025</h2>
+                    <span class="arrow-btn">&gt;</span>
+                </div>
+
+                <div class="goals-rect">
+                    Прямоугольник: Цели на год
+                </div>
+
+                <div class="extra-rect">
+                    Дополнительный блок под целями
+                </div>
+            </section>
+
+            <section class="section right-section">
+                <div class="squares-grid">
+                    <div class="small-square">Квадрат 1</div>
+                    <div class="small-square">Квадрат 2</div>
+                    <div class="small-square">Квадрат 3</div>
+                    <div class="small-square">Квадрат 4</div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+<script>
+    function performSearch() {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+            // Переходим на страницу библиотеки и передаем запрос через URL параметр ?q=
+            window.location.href = `library.html?q=${encodeURIComponent(query)}`;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали книги</title>
+    <link rel="stylesheet" href="../css/styleReadNow.css"/>
+</head>
+<body>
+
+
+<header class="universal-header">
+    <div class="header-left">
+        <a href="index.html" class="logo">Book Tracker</a>
+    </div>
+
+    <nav class="header-nav">
+        <a href="readNow.html" class="nav-item">Читаю</a>
+        <a href="library.html" class="nav-item">Библиотека</a>
+        <a href="plans.html" class="nav-item">Планы</a>
+    </nav>
+
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="Поиск в библиотеке..." onkeypress="if(event.key === 'Enter') performSearch()">
+        <button onclick="performSearch()" style="cursor:pointer; background:none; border:none;">🔍</button>
+    </div>
+
+    <div class="header-right">
+        <a href="login.html" class="auth-link">Профиль</a>
+    </div>
+</header>
+<main class="page-content">
+    <div class="main-wrapper">
+        <div class="slider-container" style="display: flex; align-items: center; gap: 15px;">
+            <button class="nav-btn" onclick="changeBook(-1)" style="cursor:pointer; padding: 10px;">&larr;</button>
+
+            <div class="top-section" id="book-content" style="flex-grow: 1;">
+                <div class="book-cover">
+                    <img src="../image/ведьмак.jpg" alt="Обложка книги" id="bookCoverImg">
+                </div>
+                <div class="details-stack">
+                    <div class="detail-block"><strong>Название книги</strong><span id="titleDisplay">Ведьмак: Последнее желание</span></div>
+                    <div class="detail-block"><strong>Автор</strong><span id="authorDisplay">Анджей Сапковский</span></div>
+                    <div class="detail-block annotation"><strong>Аннотация</strong>
+                        <p id="descDisplay">История о ведьмаке Геральте, который сражается с монстрами в мире, где люди часто оказываются страшнее чудовищ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-btn" onclick="changeBook(1)" style="cursor:pointer; padding: 10px;">&rarr;</button>
+        </div>
+
+        <div class="bottom-blocks-row">
+            <div class="bottom-block status-toggle" id="statusToggle">Прогресс</div>
+            <div class="bottom-block" id="dayDisplay">День 12</div>
+            <div class="bottom-block status-toggle" id="notesToggle">Заметки</div>
+        </div>
+
+        <div class="status-dropdown" id="statusDropdown">
+            <h3>Обновить статус книги</h3>
+            <form>
+                <div class="input-group">
+                    <label for="date-read">Дата отметки:</label>
+                    <input type="date" id="date-read">
+                </div>
+                <div class="input-group">
+                    <label for="pages-read">Отметка страниц:</label>
+                    <input type="number" id="pages-read" min="0" placeholder="Введите кол-во страниц">
+                </div>
+                <div class="input-group">
+                    <label for="book-list">Положение в списке:</label>
+                    <select id="book-list">
+                        <option value="reading">Чтение</option>
+                        <option value="finished">Я все прочитал</option>
+                        <option value="dropped">Сдаться</option>
+                    </select>
+                </div>
+                <button type="submit" class="save-btn">Сохранить изменения</button>
+            </form>
+        </div>
+
+        <div class="notes-dropdown" id="notesDropdown">
+            <h3>Заметки и комментарии</h3>
+            <form>
+                <div class="input-group">
+                    <label for="book-notes">Введите заметки по книге:</label>
+                    <textarea id="book-notes" rows="8" placeholder="Ваши мысли..."></textarea>
+                </div>
+                <button type="submit" class="save-btn">Сохранить заметки</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+
+<script>
+    function performSearch() {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+            // Переходим на страницу библиотеки и передаем запрос через URL параметр ?q=
+            window.location.href = `library.html?q=${encodeURIComponent(query)}`;
+        }
+    }
+    // 1. ДАННЫЕ ДЛЯ СЛАЙДЕРА
+    const booksData = [
+        {
+            title: "Ведьмак: Последнее желание",
+            author: "Анджей Сапковский",
+            desc: "История о ведьмаке Геральте, который сражается с монстрами в мире, где люди часто оказываются страшнее чудовищ.",
+            cover: "../image/ведьмак.jpg",
+            day: "День 12",
+            color: "#ccc"
+        },
+        {
+            title: "1984",
+            author: "Джордж Оруэлл",
+            desc: "Роман-антиутопия о жизни в тоталитарном государстве, где 'Старший брат следит за тобой'.",
+            cover: "../image/1984.jpg",
+            day: "День 5",
+            color: "#b2d1f0"
+        }
+    ];
+
+    let currentBookIndex = 0;
+
+    function changeBook(direction) {
+        currentBookIndex += direction;
+        if (currentBookIndex < 0) currentBookIndex = booksData.length - 1;
+        if (currentBookIndex >= booksData.length) currentBookIndex = 0;
+
+        const book = booksData[currentBookIndex];
+
+        // Обновляем текстовые данные
+        document.getElementById('titleDisplay').innerText = book.title;
+        document.getElementById('authorDisplay').innerText = book.author;
+        document.getElementById('descDisplay').innerText = book.desc;
+        document.getElementById('dayDisplay').innerText = book.day;
+
+        // ОБНОВЛЯЕМ ФОТОГРАФИЮ
+        const coverImg = document.getElementById('bookCoverImg');
+        if (coverImg) {
+            coverImg.src = book.cover;
+            coverImg.alt = book.title;
+        }
+    }
+
+    // 2. ЛОГИКА ВЫПАДАЮЩИХ ОКОН
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusToggleBtn = document.getElementById('statusToggle');
+        const statusDropdown = document.getElementById('statusDropdown');
+        const notesToggleBtn = document.getElementById('notesToggle');
+        const notesDropdown = document.getElementById('notesDropdown');
+
+        function toggleDropdown(button, dropdown, otherDropdown, otherButton) {
+            // Проверяем текущее состояние через getComputedStyle, так как display может быть задан в CSS
+            const isVisible = window.getComputedStyle(dropdown).display === 'block';
+
+            if (isVisible) {
+                dropdown.style.display = 'none';
+                button.style.backgroundColor = '#953642';
+            } else {
+                // Скрываем другое окно, если оно открыто
+                if (otherDropdown) {
+                    otherDropdown.style.display = 'none';
+                    if (otherButton) otherButton.style.backgroundColor = '#b66a72';
+                }
+                // Показываем текущее
+                dropdown.style.display = 'block';
+                button.style.backgroundColor = '#953642';
+            }
+        }
+
+        if (statusToggleBtn && statusDropdown) {
+            statusToggleBtn.addEventListener('click', function() {
+                toggleDropdown(statusToggleBtn, statusDropdown, notesDropdown, notesToggleBtn);
+            });
+        }
+
+        if (notesToggleBtn && notesDropdown) {
+            notesToggleBtn.addEventListener('click', function() {
+                toggleDropdown(notesToggleBtn, notesDropdown, statusDropdown, statusToggleBtn);
+            });
+        }
+    });
+
+
+</script>
+
+</body>
+</html>

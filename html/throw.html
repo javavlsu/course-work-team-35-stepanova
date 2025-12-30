@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детальная страница Квадрат 1</title>
+   <link rel="stylesheet" href="../css/styleThrow.css">
+</head>
+<body>
+
+<!--<a href="index.html" class="back-link">&larr; Назад на главную</a>-->
+
+<header class="universal-header">
+    <div class="header-left">
+        <a href="index.html" class="logo">Book Tracker</a>
+    </div>
+
+    <nav class="header-nav">
+        <a href="readNow.html" class="nav-item">Читаю</a>
+        <a href="library.html" class="nav-item">Библиотека</a>
+        <a href="plans.html" class="nav-item">Планы</a>
+    </nav>
+
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="Поиск в библиотеке..." onkeypress="if(event.key === 'Enter') performSearch()">
+        <button onclick="performSearch()" style="cursor:pointer; background:none; border:none;">🔍</button>
+    </div>
+
+    <div class="header-right">
+        <a href="login.html" class="auth-link">Профиль</a>
+    </div>
+</header>
+
+<h1>Ваши приостановленные книги</h1>
+
+<div class="content-section">
+
+    <div class="main-grid">
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 1</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 2</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 3</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 4</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 5</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 6</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main-grid">
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 7</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 8</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 9</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 10</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 11</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="vertical-block">Книга 12</div>
+            <div class="text-content-block">
+                Название
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    function performSearch() {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+            // Переходим на страницу библиотеки и передаем запрос через URL параметр ?q=
+            window.location.href = `library.html?q=${encodeURIComponent(query)}`;
+        }
+    }
+</script>
+</body>
+</html>
